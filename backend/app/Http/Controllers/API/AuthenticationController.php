@@ -45,7 +45,7 @@ class AuthenticationController extends Controller
             ], 401);
         }
         // Generate a token
-        $token = Auth::user()->createToken('auth_token')->plainTextToken;
+        $token = $request->user()->createToken('auth_token')->plainTextToken;
 
         return response()->json([
             'message' => 'Login successful.',
@@ -66,7 +66,6 @@ class AuthenticationController extends Controller
     public function user(Request $request)
     {
         // Return the authenticated user
-        return response()->json($request->user(), 200);
+        return response()->json($request->user());
     }
-
 }
