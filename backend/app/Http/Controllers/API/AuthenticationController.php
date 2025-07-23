@@ -35,8 +35,8 @@ class AuthenticationController extends Controller
     {
         // Validate the data
         $request->validate([
-            'email' => 'required|email',
-            'password' => 'required|',
+            'email' => 'required|string|email',
+            'password' => 'required|string',
         ]);
         // Check the credentials
         if(!Auth::attempt($request->only('email', 'password'))) {
@@ -56,7 +56,7 @@ class AuthenticationController extends Controller
     public function logout(Request $request)
     {
         // Revoke the token
-        $request->user()->currentAccessToken()->delete();
+        $request->user()->tokens()->delete();
 
         return response()->json([
             'message' => 'Logged out successfully.',
@@ -66,6 +66,9 @@ class AuthenticationController extends Controller
     public function user(Request $request)
     {
         // Return the authenticated user
-        return response()->json($request->user());
+        return response()->json([
+            'user' => $request->user(),
+            'success' => true,
+        ]);
     }
 }
