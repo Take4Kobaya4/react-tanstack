@@ -130,23 +130,13 @@ export const TodoForm = ({todo, isEdit}: TodoFormProps) => {
                 )}
 
                 <ButtonGroup>
-                    {isEdit ? (
                         <Button
                         type="button"
                         variant="outlined"
-                        onClick={() => navigate(`/todos/${todo.id}`) }
+                        onClick={() => navigate(isEdit ? `/todos/${todo?.id}` : `/todos`) }
                         >
                             Cancel
                         </Button>
-                    ): (
-                        <Button
-                        type="button"
-                        variant="outlined"
-                        onClick={() => navigate('/todos')}
-                        >
-                            Cancel
-                        </Button>
-                    )}
                     <Button
                         type="submit"
                         variant="contained"

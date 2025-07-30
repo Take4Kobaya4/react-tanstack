@@ -107,7 +107,6 @@ export const TodoDetail = () => {
                         <Typography>
                             {todo.description}
                         </Typography>
-                        
                     </ContentBox>
                 </CardContent>
             </StyledCard>

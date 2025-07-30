@@ -64,10 +64,10 @@ export const AuthProvider = ({children}: AuthProviderProps) => {
             throw error;
         }
     }
-    const isAuthenticated = user !== null;
+    
 
     return (
-        <AuthContext.Provider value={{ user, isLoading, login, register, logout, isAuthenticated }}>
+        <AuthContext.Provider value={{ user, isLoading, login, register, logout, isAuthenticated: !!user }}>
             {children}
         </AuthContext.Provider>
     );

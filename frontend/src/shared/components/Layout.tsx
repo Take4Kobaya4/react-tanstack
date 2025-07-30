@@ -14,7 +14,7 @@ interface LayoutProps {
 }
 
 export const Layout = ({children}: LayoutProps) => {
-    const { logout, isAuthenticated, user } = useAuth();
+    const { logout, isAuthenticated } = useAuth();
     const navigate = useNavigate();
 
     const handleLogout = async() => {
@@ -42,18 +42,12 @@ export const Layout = ({children}: LayoutProps) => {
                     </Typography>
                     { isAuthenticated ? (
                         <>
-                            <Typography variant="body1" sx={{ marginRight: 2 }}>
-                                Hello, {user?.name}!
-                            </Typography>
                             <Button color="inherit" onClick={handleLogout}>
                                 Logout
                             </Button>
                         </>
                     ): (
                         <>
-                            <Typography variant="body1" sx={{ marginRight: 2 }}>
-                                Hello, {user?.name}!
-                            </Typography>
                             <Button color="inherit" onClick={() => navigate('/login')}>
                                 Login
                             </Button>
